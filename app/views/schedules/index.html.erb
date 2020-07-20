@@ -1,0 +1,9 @@
+<h1>開催日程</h1>
+
+<%= render 'table', schedule: @schedule %>
+
+<div id="right_column">
+    <p>※出欠登録するには該当する日付をクリックしてください。</p>
+    <p id="notice"><%= notice %></p>
+</div>
+<div style="clear: both; padding: 10px 0 20px;"><%= link_to '日程を作成する（※管理者用）', new_schedule_path, { class: "btn-border" } %></div>

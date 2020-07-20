@@ -1,0 +1,218 @@
+// Place all the styles related to the schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+html{
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+    font-size: 11pt;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #808080;
+    height: 23px;
+    padding: 23px;
+}
+
+footer{
+    clear: both;
+    background-color: #fff;
+    border-top: 1px solid #808080;
+    height: 23px;    
+    padding: 23px;
+}
+
+#column{
+    margin: 23px;
+    display: flow-root;
+}
+
+#left_column{
+    float: left;
+    width: 60%;
+    display: block;
+}
+
+#right_column{
+    float: right;
+    width: 39%;
+    display: block;
+}
+
+
+table{
+    border: solid 1px #808080;
+    width: 100%;
+}
+
+table tr th{
+    border: solid 1px #808080;
+    padding: 8px;
+    text-align: center;
+    font-weight: normal;
+}
+
+table tr td{
+    border: solid 1px #808080;
+    padding: 8px;
+}
+
+.border_n{
+    border: none;
+}
+
+.border_l{
+    border-top: none;
+    border-bottom: none;
+    border-left: solid 1px #808080;
+    border-right: none;
+}
+
+.border_t{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.border_tl{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: solid 1px #808080;
+    border-right: none;
+}
+
+.border_tr{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: none;
+    border-right: solid 1px #808080;
+}
+.border_rb{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: solid 1px #808080;
+    border-right: none;
+}
+
+.border_rb{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: none;
+    border-right: solid 1px #808080;
+}
+
+#formarea{
+    margin: 30px 0;
+}
+
+input#submit_button{
+    width: 150px;
+    height: 50px;
+}
+
+table#create_data tr td{
+    border-top: solid 1px #808080;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+textarea{
+    width: 90%;
+}
+
+
+#create_data select{
+    width: 23%;
+    height: 30px;
+    margin: 2px;
+}
+
+.schedule_class{
+    height: 30px;
+}
+
+//ボタンCSS
+.btn-border {
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+    display: inline-block;
+    max-width: 200px;
+    text-align: left;
+    background-color: #efefef;
+    border: 1px solid #666;
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: .4s;
+  }
+  
+.btn-border:hover {
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+    background-color: #666;
+    border-color: #666;
+    color: #FFF;
+}
+
+.btn-border2 {
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+    display: inline-block;
+    max-width: 200px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #999;
+    font-size: 13px;
+    color: #999;
+    text-decoration: none;
+    padding: 0 4px;
+    margin: 1px;
+    transition: .4s;
+    border-radius: 50%;
+}
+  
+.btn-border2:hover {
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+    background-color: #666;
+    border-color: #666;
+    color: #FFF;
+}
+
+table tr td.border_t select{
+    width: 30%;
+    height: 30px;
+}
+
+table tr td.border_tl select{
+    width: 30%;
+    height: 30px;
+}
+
+table tr td.border_tl input{
+    width: 90%;
+    height: 30px;
+}
+
+table tr td.border_tl textarea{
+    width: 90%;
+    height: 30px;
+}
+
+.active{
+    background-color: #f0f8ff;
+}
+
+.tar{
+    float: right;
+}
+
+.image_switch{
+    width: 40%;
+}

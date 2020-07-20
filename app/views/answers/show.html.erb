@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+    <th class="border_n" align="center" bgcolor="#e0e0e0">スケジュールID</th>
+    <th class="border_l" align="center" bgcolor="#e0e0e0">名前</th>
+    <th class="border_l" align="center" bgcolor="#e0e0e0">出欠</th>
+    <th class="border_l" align="center" bgcolor="#e0e0e0">コメント</th>
+</tr>
+<tr>
+  <td class="border_t"><%= @answer.schedule_id %></td>
+  <td class="border_tl"><%= @answer.name %></td>
+  <td class="border_tl"><%= @answer.reason %></td>
+  <td class="border_tl"><%= @answer.comment %></td>
+</tr>
+</table>
+
+<%= link_to '編集する', edit_answer_path(@answer) %> |
+<%= link_to '戻る', answers_path %>

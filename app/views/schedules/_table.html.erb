@@ -1,0 +1,34 @@
+<div id="left_column">
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <th class="border_n" rowspan="2" width="30%" bgcolor="#bfbfbf">日時・場所</th>
+            <td class="border_l" colspan="4" align="center" bgcolor="#bfbfbf">コメント</td>
+            <tr>
+                <td class="border_tl" align="center" bgcolor="#99ffcc">参加</td>
+                <td class="border_tl" align="center" bgcolor="#ffffcc">多分</td>
+                <td class="border_tl" align="center" bgcolor="#d3d3d3">未定</td>
+                <td class="border_tl" align="center" bgcolor="#ffb6c1">欠席</td>
+            </tr>
+        </tr>
+        <% @schedules.each do |schedule| %>
+            <tr>
+            <td class="border_t" rowspan="2">
+
+            
+            <% weeks = ["月","火","水","木","金","土","日"] %>
+            <% index = schedule.ymd.strftime("%u").to_i %>
+
+            <%= link_to schedule.ymd.strftime("%Y年%m月%d日(#{weeks[index - 1]})"), schedule %><br><%= schedule.start.strftime('%H:%M') %> ～ <%= schedule.end.strftime('%H:%M') %><br><%= schedule.place %>
+            </td>
+            <td class="border_tl" colspan="4"><%= simple_format schedule.addcomment %></td>
+            <tr>
+                <td class="border_tl" align="center"><%= schedule.answer.sanka&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answer.tabun&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answer.mitei&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answer.kesseki&.count %></td>
+            </tr>
+        </tr>
+        <% end %>
+        </table>
+        <p><%= @caution %></p>
+</div>

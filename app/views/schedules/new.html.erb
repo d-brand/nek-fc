@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>イベント一覧</h1>
+
+<table cellspacing="0" cellpadding="0">
+    <tr>
+        <th class="border_n" align="center" bgcolor="#e0e0e0">開催日時・場所</th>
+        <th class="border_l" align="center" bgcolor="#e0e0e0">コメント</th>
+        <th colspan="2" class="border_l" align="center" bgcolor="#e0e0e0">アクション</th>
+    </tr>
+    <% @schedules.each do |schedule| %>
+    <tr>
+        <td class="border_t">
+            <% weeks = ["月","火","水","木","金","土","日"] %>
+            <% index = schedule.ymd.strftime("%u").to_i %>
+            <%= schedule.ymd.strftime("%Y年%m月%d日(#{weeks[index - 1]})") %><br><%= schedule.start.strftime('%H:%M') %> ～ <%= schedule.end.strftime('%H:%M') %><br><%= schedule.place %>
+        </td>
+        <td class="border_tl"><%= simple_format schedule.addcomment %></td>
+        <td class="border_tl" align="center"><%= link_to '編集', edit_schedule_path(schedule), { class: "btn-border" } %></td>
+        <td class="border_tl" align="center"><%= link_to '削除', schedule, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn-border" %></td>
+    </tr>
+    <% end %>
+</table>
+
+<h1 style="margin-top: 40px;">イベント新規作成</h1>
+<%= render 'form', schedule: @schedule %>
+
+<p><%= @attention %></p>
+<p><%= @msg %></p>
+
+<div style="clear: both; padding-top: 10px;"><%= link_to '日程一覧に戻る', root_path, { class: "btn-border" } %></div>

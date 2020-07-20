@@ -1,0 +1,8 @@
+<%= form_for(answer) do |f| %>
+    <p><%= f.hidden_field :schedule_id, {value: answer.schedule_id} %></p>
+    <p>名前：<%= f.text_field :name, placeholder: '必須項目', class: "schedule_class" %></p>
+    <p>選択：<%= f.select :reason, [['参加', 'sanka'], ['多分参加', 'tabun'], ['未定', 'mitei'], ['欠席', 'kesseki']], { selected: '参加' }, { class: "schedule_class" } %></p>
+    <p>コメント：<%= f.text_field :comment, { class: "schedule_class" } %></p>
+    <p><%= f.submit %></p>
+    <p>※名前の入力は必須です。<br>※×は削除ボタンです。<br>※同名前での更新は出来ません。<br>※名前を変更したい場合は、一旦削除してから再登録して下さい。</p>
+  <% end %>

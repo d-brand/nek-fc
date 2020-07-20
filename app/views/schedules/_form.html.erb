@@ -1,0 +1,34 @@
+<%= form_with(model: schedule, local: true) do |form| %>
+  <% if schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+        <% schedule.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+        <th class="border_n" align="center" bgcolor="#e0e0e0">開催日時</th>
+        <th class="border_l" align="center" bgcolor="#e0e0e0">開始時間</th>
+        <th class="border_l" align="center" bgcolor="#e0e0e0">終了時間</th>
+        <th class="border_l" align="center" bgcolor="#e0e0e0">開催場所</th>
+        <th class="border_l" align="center" bgcolor="#e0e0e0">詳細</th>
+        <th colspan="3" class="border_l" align="center" bgcolor="#e0e0e0">アクション</th>
+    </tr>
+    <tr>
+      <td class="border_t" align="center"><%= form.date_select :ymd, { class: "btn-border" } %></td>
+      <td class="border_tl" align="center"><%= form.time_select :start, {default: Date.today + 9.hour} %></td>
+      <td class="border_tl" align="center"><%= form.time_select :end, {default: Date.today + 13.hour} %></td>
+      <td class="border_tl" align="center"><%= form.text_field :place %></td>
+      <td class="border_tl" align="center"><%= form.text_area :addcomment %></td>
+      <td class="border_tl" align="center"><%= form.submit %></td>
+    </tr>
+</table>
+
+<% end %>
