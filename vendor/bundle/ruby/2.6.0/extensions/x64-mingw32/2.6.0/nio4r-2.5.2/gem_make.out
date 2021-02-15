@@ -1,0 +1,14 @@
+current directory: C:/Users/kawas/schedule/platini/vendor/bundle/ruby/2.6.0/gems/nio4r-2.5.2/ext/nio4r
+D:/Ruby26-x64/bin/ruby.exe -I D:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200720-10180-q6zp6q.rb extconf.rb
+
+current directory: C:/Users/kawas/schedule/platini/vendor/bundle/ruby/2.6.0/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR=" clean
+make: *** ターゲット 'clean' を make するルールがありません.  中止.
+
+current directory: C:/Users/kawas/schedule/platini/vendor/bundle/ruby/2.6.0/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR="
+make: 'all' に対して行うべき事はありません.
+
+current directory: C:/Users/kawas/schedule/platini/vendor/bundle/ruby/2.6.0/gems/nio4r-2.5.2/ext/nio4r
+make "DESTDIR=" install
+make: 'install' に対して行うべき事はありません.
