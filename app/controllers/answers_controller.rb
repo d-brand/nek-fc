@@ -31,7 +31,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to schedules_url, notice: '出欠を登録しました。' }
+        #format.html { redirect_to schedules_url, notice: '出欠を登録しました。' }
+        format.html { redirect_to :action=>"show", :controller=>"schedules", :id=>@answer.schedule_id, notice: '出欠を登録しました。' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { redirect_to schedules_url, notice: '名前が記入されていません。' }
@@ -59,7 +60,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to schedules_url, notice: '登録が削除されました。' }
+      format.html { redirect_to :action=>"show", :controller=>"schedules", :id=>@answer.schedule_id, notice: '登録が削除されました。' }
       format.json { head :no_content }
     end
   end

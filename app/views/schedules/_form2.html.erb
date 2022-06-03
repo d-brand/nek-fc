@@ -1,5 +1,5 @@
-<%= form_for(answer) do |f| %>
-    <p><%= f.hidden_field :schedule_id, {value: answer.schedule_id} %></p>
+  <%= form_for(answers) do |f| %>
+    <p><%= f.hidden_field :schedule_id, {value: answers.schedule_id} %></p>
     <p>名前：<%= f.text_field :name, placeholder: '必須項目', class: "schedule_class" %></p>
     <p>選択：<%= f.select :reason, [['参加', 'sanka'], ['多分参加', 'tabun'], ['未定', 'mitei'], ['欠席', 'kesseki']], { selected: '参加' }, { class: "schedule_class" } %></p>
     <p>コメント：<%= f.text_field :comment, { class: "schedule_class" } %></p>

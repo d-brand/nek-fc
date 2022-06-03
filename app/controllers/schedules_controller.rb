@@ -5,14 +5,23 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     
-    @schedules = Schedule.all
+    #@schedules = Schedule.all
+    #@schedules = Schedule.where("schedules.ymd > ?", Time.current.yesterday).reorder(:ymd)
     @schedules = Schedule.where("schedules.ymd > ?", Time.current.yesterday).reorder(:ymd)
+    @workschedule =@schedules.first
+    
+    if @workschedule.present?
+      @answers_sanka = @workschedule.answers.where("reason =?",'sanka')
+      @answers_tabun = @workschedule.answers.where("reason =?",'tabun')
+      @answers_mitei = @workschedule.answers.where("reason =?",'mitei')
+      @answers_kesseki =  @workschedule.answers.where("reason =?",'kesseki')
+    end
 
-    @answers = Answer.all
-    @answers_sanka = Answer.sanka
-    @answers_tabun = Answer.tabun
-    @answers_mitei = Answer.mitei
-    @answers_kesseki = Answer.kesseki
+    #@answers = Answer.all
+    #@answers_sanka = Answer.sanka
+    #@answers_tabun = Answer.tabun
+    #@answers_mitei = Answer.mitei
+    #@answers_kesseki = Answer.kesseki
     @answer = Answer.new
     @answer.schedule_id = params[:id]
 
@@ -24,23 +33,41 @@ class SchedulesController < ApplicationController
   # GET /schedules/1.json
   def show
     @schedules = Schedule.where("schedules.ymd > ?", Time.current.yesterday).reorder(:ymd)
-    @answers = Answer.all
-    @answers_sanka = Answer.sanka
-    @answers_tabun = Answer.tabun
-    @answers_mitei = Answer.mitei
-    @answers_kesseki = Answer.kesseki
-
-    if params[:id]
-      schedule = Schedule.find(params[:id])
-    else
-      schedule = Schedule.uketsukechu.order(ymd: :asc).first
+    @workschedule =@schedules.first
+    
+    if @workschedule.present?
+      @answers_sanka = @workschedule.answers.where("reason =?",'sanka')
+      @answers_tabun = @workschedule.answers.where("reason =?",'tabun')
+      @answers_mitei = @workschedule.answers.where("reason =?",'mitei')
+      @answers_kesseki =  @workschedule.answers.where("reason =?",'kesseki')
     end
 
-    @answers_all = schedule.answer
-    @answers_sanka = schedule.answer.sanka
-    @answers_tabun = schedule.answer.tabun
-    @answers_mitei = schedule.answer.mitei
-    @answers_kesseki = schedule.answer.kesseki
+    #@answers = Answer.all
+    #@answers_sanka = Answer.sanka
+    #@answers_tabun = Answer.tabun
+    #@answers_mitei = Answer.mitei
+    #@answers_kesseki = Answer.kesseki
+    if@workschedule.present?
+      if params[:id]
+        schedule = Schedule.find(params[:id])
+        @answers_sanka =  schedule.answers.where("reason =?",'sanka')
+        @answers_tabun =  schedule.answers.where("reason =?",'tabun')
+        @answers_mitei =  schedule.answers.where("reason =?",'mitei')
+        @answers_kesseki =  schedule.answers.where("reason =?",'kesseki')
+      else
+        schedule = Schedule.uketsukechu.order(ymd: :asc).first
+        @answers_sanka =  schedule.answers.where("reason =?",'sanka')
+        @answers_tabun =  schedule.answers.where("reason =?",'tabun')
+        @answers_mitei =  schedule.answers.where("reason =?",'mitei')
+        @answers_kesseki =  schedule.answers.where("reason =?",'kesseki')
+      end
+    end
+
+    #@answers_all = schedule.answer
+    #@answers_sanka = schedule.answer.sanka
+    #@answers_tabun = schedule.answer.tabun
+    #@answers_mitei = schedule.answer.mitei
+    #@answers_kesseki = schedule.answer.kesseki
 
     @answer = Answer.new
     @answer.schedule_id = params[:id]
@@ -58,6 +85,12 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
     @schedule = Schedule.new
     @schedules = Schedule.all.order(ymd: "ASC")
+
+    if @schedules.present?
+      @kizonschedule = Schedule.where("schedules.ymd > ?", Time.current.yesterday).reorder(:ymd).first
+    else
+      @kizonschedule = 0
+    end
   end
 
   # GET /schedules/1/edit
@@ -108,7 +141,8 @@ class SchedulesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
       @schedule = if params[:id].blank?
-        Schedule.uketsukechu.first
+        #Schedule.uketsukechu.first
+        Schedule.where("schedules.ymd > ?", Time.current.yesterday).reorder(:ymd).first
       else
         Schedule.find(params[:id])
       end

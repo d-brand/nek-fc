@@ -24,10 +24,10 @@
             </td>
             <td class="border_tl" colspan="4"><%= simple_format schedule.addcomment %></td>
             <tr class="active">
-                <td class="border_tl" align="center"><%= schedule.answer.sanka&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.tabun&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.mitei&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.kesseki&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.sanka&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.tabun&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.mitei&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.kesseki&.count %></td>
             </tr>
         </tr>
         <% else %>
@@ -39,10 +39,10 @@
             </td>
             <td class="border_tl" colspan="4"><%= simple_format schedule.addcomment %></td>
             <tr>
-                <td class="border_tl" align="center"><%= schedule.answer.sanka&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.tabun&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.mitei&.count %></td>
-                <td class="border_tl" align="center"><%= schedule.answer.kesseki&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.sanka&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.tabun&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.mitei&.count %></td>
+                <td class="border_tl" align="center"><%= schedule.answers.kesseki&.count %></td>
             </tr>
         </tr>
         <% end %>
@@ -57,39 +57,39 @@
         <tr>
             <th class="border_n" width="20%" bgcolor="#99ffcc">参加</th>
             <td class="border_l">
-            <% @answers_sanka&.each do |answer| %>
-                <%= answer.name %>：<%= answer.comment %>
-                <%= link_to('×', answer, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
+            <% @answers_sanka&.each do |answers| %>
+                <%= answers.name %>：<%= answers.comment %>
+                <%= link_to('×', answers, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
             <% end %>
             </td>
             </tr>
         <tr>
             <th class="border_t" bgcolor="#ffffcc">多分参加</th>
             <td class="border_tl">
-            <% @answers_tabun&.each do |answer| %>
-                <%= answer.name %>：<%= answer.comment %>
-                <%= link_to('×', answer, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
+            <% @answers_tabun&.each do |answers| %>
+                <%= answers.name %>：<%= answers.comment %>
+                <%= link_to('×', answers, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
             <% end %>
             </td>
         </tr>
         <tr>
             <th class="border_t" bgcolor="#d3d3d3">未定</th>
             <td class="border_tl">
-            <% @answers_mitei&.each do |answer| %>
-                <%= answer.name %>：<%= answer.comment %>
-                <%= link_to('×', answer, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
+            <% @answers_mitei&.each do |answers| %>
+                <%= answers.name %>：<%= answers.comment %>
+                <%= link_to('×', answers, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
             <% end %>
             </td>
         </tr>
         <tr>
             <th class="border_t" bgcolor="#ffb6c1">欠席</th>
             <td class="border_tl">
-            <% @answers_kesseki&.each do |answer| %>
-                <%= answer.name %>：<%= answer.comment %>
-                <%= link_to('×', answer, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
+            <% @answers_kesseki&.each do |answers| %>
+                <%= answers.name %>：<%= answers.comment %>
+                <%= link_to('×', answers, { method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-border2' }) %><br>
             <% end %>
             </td>
         </tr>
     </table>
-    <%= render 'form2', answer: @answer %>
+    <%= render 'form2', answers: @answer %>
 </div>
