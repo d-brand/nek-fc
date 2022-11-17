@@ -1,0 +1,19 @@
+databases:
+  - name: dbrand_app
+    databaseName: dbrand_app
+    user: dbrandschedule
+    region: ohio
+
+services:
+  - type: web
+    name: dbrand_app
+    env: ruby
+    region: ohio
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: <%= ENV['DATABASE_URL'] %>
+        fromDatabase:
+          name: nek-fc
+          property: connectionString
